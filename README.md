@@ -2,7 +2,7 @@
 
 This repository contains a minimal example for building a Retrieval-Augmented Generation (RAG) workflow with [LlamaIndex](https://github.com/run-llama/llama_index).
 
-The `starter.py` script follows the official [starter example](https://docs.llamaindex.ai/en/stable/getting_started/starter_example_local/) from the docs. It loads text files from the `data/` directory, creates an index and runs a sample query using a model served by [Ollama](https://ollama.com/).
+The `starter.py` script loads text files from the `data/` directory, builds an index and then runs a small agent workflow powered by a model served by [Ollama](https://ollama.com/). The agent can answer questions about the documents and perform simple calculations.
 
 ## Setup
 
@@ -16,7 +16,7 @@ pip install -r requirements.txt
    If needed, pull a model and start the server:
 
 ```bash
-ollama pull llama2
+ollama pull llama3
 ollama serve
 ```
 
