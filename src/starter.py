@@ -50,7 +50,7 @@ agent = AgentWorkflow.from_tools_or_functions(
 # Now we can ask questions about the documents or do calculations
 async def main():
     response = await agent.run(
-        "What did the author do in college? Also, what's 7 * 8?"
+        "What did the author do in college?"
     )
     print(response)
 
