@@ -16,8 +16,7 @@ pip install -r requirements.txt
    If needed, pull a model and start the server:
 
 ```bash
-ollama pull llama2
-ollama serve
+ollama pull llama3
 ```
 
 3. Run the script
