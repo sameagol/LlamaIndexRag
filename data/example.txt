@@ -1,0 +1,1 @@
+LlamaIndex is a library for building context-augmented LLM applications, enabling retrieval-augmented generation by connecting custom data sources to language models.
