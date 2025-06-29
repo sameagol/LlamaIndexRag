@@ -1,8 +1,8 @@
-import os
-from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
+from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings
+from llama_index.llms.ollama import Ollama
 
-# Set your OpenAI API key
-os.environ.setdefault('OPENAI_API_KEY', 'sk-...')  # TODO: replace with your key
+# Configure Ollama as the LLM backend
+Settings.llm = Ollama(model="llama2")
 
 # Load documents from the data directory
 reader = SimpleDirectoryReader('data')
