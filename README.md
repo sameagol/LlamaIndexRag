@@ -40,3 +40,9 @@ python src/download_aim.py
 ```bash
 python src/download_safo.py
 ```
+
+6. Parse PDFs using the smart loader
+
+```bash
+python -c "from src import load_pdfs; print(len(load_pdfs(['data/aim_basic.pdf'])))"
+```

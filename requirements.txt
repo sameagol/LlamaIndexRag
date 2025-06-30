@@ -5,3 +5,4 @@ ollama
 beautifulsoup4
 requests
 tqdm
+llama-index-readers-smart-pdf-loader
