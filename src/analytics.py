@@ -11,11 +11,13 @@ def chunk_statistics(index: VectorStoreIndex) -> List[Dict[str, int]]:
             text = node.get_content()
         except Exception:
             text = str(node)
+        snippet = " ".join(text.split())[:60]
         results.append({
             "node_id": node.node_id,
             "source": getattr(node, "ref_doc_id", "unknown"),
             "characters": len(text),
             "words": len(text.split()),
+            "snippet": snippet,
         })
     return results
 
@@ -26,5 +28,5 @@ def print_chunk_statistics(index: VectorStoreIndex) -> None:
     print(f"Index contains {len(stats)} chunks")
     for item in stats:
         print(
-            f"Chunk {item['node_id']} from {item['source']}: {item['words']} words, {item['characters']} characters"
+            f"Chunk {item['node_id']} from {item['source']}: {item['words']} words, {item['characters']} characters | {item['snippet']}"
         )
