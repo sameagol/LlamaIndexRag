@@ -28,3 +28,9 @@ ollama pull llama3
 ```bash
 python starter.py
 ```
+
+4. Download the AIM Basic PDF
+
+```bash
+python src/download_aim.py
+```
