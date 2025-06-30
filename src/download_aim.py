@@ -2,7 +2,7 @@ import os
 import urllib.request
 import argparse
 
-AIM_URL = "https://www.faa.gov/air_traffic/publications/atpubs/aim_basic/aim.pdf"
+AIM_URL = "https://www.faa.gov/air_traffic/publications/media/AIM_Basic_dtd_2-20-25_post.pdf"
 
 
 def download_aim(output_path: str) -> None:
