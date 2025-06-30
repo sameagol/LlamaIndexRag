@@ -34,3 +34,9 @@ python starter.py
 ```bash
 python src/download_aim.py
 ```
+
+5. Download SAFO PDFs
+
+```bash
+python src/download_safo.py
+```
