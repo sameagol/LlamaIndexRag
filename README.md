@@ -4,6 +4,9 @@ This repository contains a minimal example for building a Retrieval-Augmented Ge
 
 The `starter.py` script follows the official [starter example](https://docs.llamaindex.ai/en/stable/getting_started/starter_example_local/) from the docs. It loads text files from the `data/` directory, creates an index and runs a sample query using a model served by [Ollama](https://ollama.com/).
 
+The script now also prints statistics about how the index was created. This
+information helps understand how documents were chunked and stored.
+
 ## Setup
 
 1. Install dependencies
