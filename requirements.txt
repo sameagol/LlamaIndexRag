@@ -1,2 +1,4 @@
 llama-index
-openai
+llama-index-llms-ollama
+llama-index-embeddings-huggingface
+ollama
