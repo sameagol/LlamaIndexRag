@@ -2,6 +2,7 @@ from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings
 from llama_index.core.agent.workflow import AgentWorkflow
 from llama_index.llms.ollama import Ollama
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+from .analytics import print_chunk_statistics
 import asyncio
 import os
 
@@ -21,6 +22,8 @@ index = VectorStoreIndex.from_documents(
     # we can optionally override the embed_model here
     # embed_model=Settings.embed_model,
 )
+
+print_chunk_statistics(index)
 query_engine = index.as_query_engine(
     # we can optionally override the llm here
     # llm=Settings.llm,
