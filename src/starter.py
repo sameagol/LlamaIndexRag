@@ -24,9 +24,17 @@ index = VectorStoreIndex.from_documents(
 )
 
 print_chunk_statistics(index)
+
+# Allow experimentation with how many similar chunks to retrieve
+# via the TOP_K environment variable (5-10 recommended).
+top_k = int(os.getenv("TOP_K", "8"))
+
 query_engine = index.as_query_engine(
     # we can optionally override the llm here
     # llm=Settings.llm,
+    similarity_top_k=top_k,
+    similarity_cutoff=0.75,
+    filters={"section": "college"},
 )
 
 
