@@ -24,9 +24,16 @@ index = VectorStoreIndex.from_documents(
 )
 
 print_chunk_statistics(index)
+
+# Allow experimentation with how many similar chunks to retrieve
+# via the TOP_K environment variable (5-10 recommended).
+top_k = int(os.getenv("TOP_K", "8"))
+
 query_engine = index.as_query_engine(
     # we can optionally override the llm here
     # llm=Settings.llm,
+    similarity_top_k=top_k,
+    similarity_cutoff=0.75,
 )
 
 
@@ -36,7 +43,7 @@ def multiply(a: float, b: float) -> float:
 
 
 async def search_documents(query: str) -> str:
-    """Useful for answering natural language questions about an personal essay written by Paul Graham."""
+    """Useful for answering natural language questions about FAA documents including SAFOs, AIM, and other aviation materials."""
     response = await query_engine.aquery(query)
     return str(response)
 
@@ -53,7 +60,8 @@ agent = AgentWorkflow.from_tools_or_functions(
 # Now we can ask questions about the documents or do calculations
 async def main():
     response = await agent.run(
-        "What did the author do in college?"
+        # "What did the author do in college?"
+        "Which FAA SAFOs issued since 2020 focus on runway-incursion prevention, and what common mitigation actions do they recommend to air-carrier operators?"
     )
     print(response)
 
