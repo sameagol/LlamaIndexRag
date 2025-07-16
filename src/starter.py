@@ -1,27 +1,20 @@
-from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings
-from llama_index.core.agent.workflow import AgentWorkflow
-from llama_index.llms.ollama import Ollama
-from llama_index.embeddings.huggingface import HuggingFaceEmbedding
-from .analytics import print_chunk_statistics
+"""Example script for querying a persisted index."""
+
 import asyncio
 import os
 
-# Settings control global defaults
-Settings.embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-base-en-v1.5")
-Settings.llm = Ollama(
-    model="llama3.1",
-    request_timeout=360.0,
-    # Manually set the context window to limit memory usage
-    context_window=8000,
+from llama_index.core.agent.workflow import AgentWorkflow
+from llama_index.core import Settings
+from .analytics import print_chunk_statistics
+from .index_utils import (
+    DEFAULT_DATA_DIR,
+    DEFAULT_PERSIST_DIR,
+    load_or_create_index,
 )
 
-# Create a RAG tool using LlamaIndex
-documents = SimpleDirectoryReader("data").load_data()
-index = VectorStoreIndex.from_documents(
-    documents,
-    # we can optionally override the embed_model here
-    # embed_model=Settings.embed_model,
-)
+
+# Load an existing index or build it if needed
+index = load_or_create_index(DEFAULT_DATA_DIR, DEFAULT_PERSIST_DIR)
 
 print_chunk_statistics(index)
 
@@ -30,8 +23,6 @@ print_chunk_statistics(index)
 top_k = int(os.getenv("TOP_K", "8"))
 
 query_engine = index.as_query_engine(
-    # we can optionally override the llm here
-    # llm=Settings.llm,
     similarity_top_k=top_k,
     similarity_cutoff=0.75,
 )
