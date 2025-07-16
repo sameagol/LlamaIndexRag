@@ -23,10 +23,10 @@ pip install -r requirements.txt
 ollama pull llama3
 ```
 
-3. Run the script
+3. Run the script (set `TOP_K` to change how many chunks to search)
 
 ```bash
-python starter.py
+TOP_K=8 python starter.py
 ```
 
 4. Download the AIM Basic PDF
