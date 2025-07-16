@@ -2,3 +2,7 @@ llama-index
 llama-index-llms-ollama
 llama-index-embeddings-huggingface
 ollama
+beautifulsoup4
+requests
+tqdm
+llama-index-readers-smart-pdf-loader

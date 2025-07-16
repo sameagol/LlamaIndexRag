@@ -28,3 +28,21 @@ ollama pull llama3
 ```bash
 python starter.py
 ```
+
+4. Download the AIM Basic PDF
+
+```bash
+python src/download_aim.py
+```
+
+5. Download SAFO PDFs
+
+```bash
+python src/download_safo.py
+```
+
+6. Parse PDFs using the smart loader
+
+```bash
+python -c "from src import load_pdfs; print(len(load_pdfs(['data/aim_basic.pdf'])))"
+```
